@@ -12,12 +12,12 @@ function Tile (props) {
 
 
     return (
-        <div className='ui eight wide column tilePig'  >
+        <div key={props.id} id={props.id} className='ui eight wide column tilePig'  >
             <h3>Name: {hogObj.name}</h3>
             <img src={hogObj.image} alt={hogObj.name} onClick={showDetails}></img>
             <p hidden={show}>Specialty: {hogObj.specialty}</p>
             <p hidden={show}>Weight: {hogObj.weight}</p>
-            <p hidden={show}>Greased: {hogObj.greased}</p>
+            <p hidden={show}>Greased: {hogObj.greased? 'Absolutely' : 'Nope :('}</p>
             <p hidden={show}>Highest Medal Achieved: {hogObj.["highest medal achieved"]}</p>
         </div>
     );

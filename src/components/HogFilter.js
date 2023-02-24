@@ -13,15 +13,60 @@ function HogFilter (props) {
 
     const [isGreased, setIsGreased] = useState(false);
 
+    const [sortValue, setSortValue] = useState('all');
+
     const filterChange = () => {
         setIsGreased(!isGreased);
         
     }
 
+    const sorter = (e) => {
+        setSortValue(e.target.value);
+    }
+    
+    const byNameOrWeight = (hogA, hogB) => {
+        if (sortValue == 'name'){
+            if(hogA.name > hogB.name){
+                return 1;
+            }
+            else if (hogA.name < hogB.name) {
+                return -1;
+            }
+            else{return 0;}
+        }
+        else if (sortValue == 'weight') {
+            if(hogA.weight > hogB.weight){
+                return 1;
+            }
+            else if (hogA.weight < hogB.weight) {
+                return -1;
+            }
+            else{return 0;}
+        }
+        else {
+            return 0;
+        }
+    }
+
+    const sortedHogs = (isGreased? [...filteredHogs] : [...hogs]).sort(byNameOrWeight)
+
+
     return (
         <div id='TileContainer'>
             <button id='test' onClick={() => filterChange()}>{`Greased Filter: ${isGreased}`}</button>
-            <TileContainer arr = {isGreased ? filteredHogs : pigArr} />
+            <label>  Sort By:
+            <select 
+                name='sort' 
+                value={sortValue}
+                onChange={e => {sorter(e)}}> 
+                <option value='all'>None</option>
+                <option value='name'>Name</option>
+                <option value='weight'>Weight</option>
+            </select>
+            </label>
+            <TileContainer arr = {sortedHogs} />
+            <br></br>
+            <br></br>
         </div>
 
     )

@@ -7,13 +7,15 @@ function TileContainer (props) {
     const displayData = () => {
         console.log('clicked');
     }
+    let iter = 0;
 
     return (        
 
         <div id='tileContainer' className="ui grid container">
         {
             props.arr.map(hog => {
-                return <Tile pig={hog} onClick={displayData()}/>;
+                iter++;
+                return (<Tile pig={hog} id={iter} onClick={displayData()}/>)
             })
         }
         </div>
