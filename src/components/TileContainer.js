@@ -3,16 +3,21 @@ import Tile from './Tile'
 
 function TileContainer (props) {
 
-return (        
-
-    <div id='tileContainer' className="ui grid container">
-    {
-        props.arr.map(hog => {
-            return <Tile pig={hog} />;
-        })
+    //const [] = useState('img')
+    const displayData = () => {
+        console.log('clicked');
     }
-    </div>
-)
 
-}
+    return (        
+
+        <div id='tileContainer' className="ui grid container">
+        {
+            props.arr.map(hog => {
+                return <Tile pig={hog} onClick={displayData()}/>;
+            })
+        }
+        </div>
+    )
+
+    }
 export default TileContainer;
