@@ -5,7 +5,7 @@ function TileContainer (props) {
 
 return (        
 
-    <div id='tileContainer'>
+    <div id='tileContainer' className="ui grid container">
     {
         props.arr.map(hog => {
             return <Tile pig={hog} />;

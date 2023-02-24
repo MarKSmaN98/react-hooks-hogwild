@@ -108,6 +108,11 @@ ul {
   opacity: 0.75;
 }
 
+.tilePig img{
+  height: auto;
+  width: 100%;
+}
+
 .pigTile h3 {
   color: #FBB;
 }
